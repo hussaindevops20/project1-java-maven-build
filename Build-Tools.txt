@@ -1,0 +1,196 @@
+Build Tools
+===========
+
+Frontend --> UI application --> php,html,js,java jsp,reactjs,angular js,vue js,python Django etc 
+backend --> Nodejs,python,java,.net,go etc 
+database --> mssql,oracle,mysql,mariadb,postgress sql,mongodb,cassandra,documentdb,dynamodb etc 
+
+3 Tier architecture application 
+
+Frontend--> reactjs 
+backend --> java springboot  --> Eclips,Intellij,jetbrains,visualstudiocode,visualstudio
+database --> mariadb 
+
+
+reactjs --> npm (node package manager)
+java  --> maven or gradle 
+.net  --> nuget or dotnet 
+
+maven installation:
+=================
+
+pre-requisites: install java
+
+ubuntu/debian  --> apt install maven 
+                   apt-get install maven 
+                   snap install maven 
+
+centos/amazon/rhel --> yum install maven 
+                       dnf install maven 
+
+demo 
+  -- pom.xml 
+     src 
+       -- main
+            -- resources
+            -- java 
+          test 
+            -- java 
+
+pom --> Project Object Model 
+     --> it contains the all the project dependency package defined here.
+
+maven lifecycle commands:
+1. mvn validate
+2. mvn compile
+3. mvn clean
+4. mvn build
+5. mvn deploy 
+
+Maven Phases
+Although hardly a comprehensive list, these are the most common default lifecycle phases executed.
+
+validate: validate the project is correct and all necessary information is available
+compile: compile the source code of the project
+test: test the compiled source code using a suitable unit testing framework. These tests should not require the code be packaged or deployed
+package: take the compiled code and package it in its distributable format, such as a JAR.
+integration-test: process and deploy the package if necessary into an environment where integration tests can be run
+verify: run any checks to verify the package is valid and meets quality criteria
+install: install the package into the local repository, for use as a dependency in other projects locally
+deploy: done in an integration or release environment, copies the final package to the remote repository for sharing with other developers and projects.
+There are two other Maven lifecycles of note beyond the default list above. They are
+
+clean: cleans up artifacts created by prior builds
+site: generates site documentation for this project
+
+
+hello.java --> compile --> hello.class
+
+mvn package == mvn validate + mvn compile + mvn test 
+
+maven errror:
+============
+
+pom.xml missing in project
+--------------------------
+[INFO] ------------------------------------------------------------------------
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (/home/kushal/abc). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+
+
+java version mismatch
+---------------------
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 2 source files with javac [debug parameters release 17] to target/classes
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  11.874 s
+[INFO] Finished at: 2024-07-10T01:44:25Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.13.0:compile (default-compile) on project demo: Fatal error compiling: error: release version 17 not supported -> [Help 1]
+[ERROR]
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR]
+
+
+https://github.com/malleshdevops/joinfaces-maven-war-example.git
+
+11/Jun
+=====
+Reactjs --> npm 
+
+nginx --> /etc/nginx/nginx.conf 
+          /usr/share/nginx/
+
+npm run build 
+npm run start 
+
+ npm run build
+npm ERR! code ENOENT
+npm ERR! syscall open
+npm ERR! path /home/kushal/package.json
+npm ERR! errno -2
+npm ERR! enoent ENOENT: no such file or directory, open '/home/kushal/package.json'
+npm ERR! enoent This is related to npm not being able to find a file.
+npm ERR! enoent
+
+npm ERR! A complete log of this run can be found in:
+npm ERR!     /home/kushal/.npm/_logs/2024-07-11T01_47_41_945Z-debug.log
+
+install mariadb 
+===============
+ --> default : 3306
+     sql --> relational database 
+   sudo apt install mariadb-server-10.3
+   installation path: /var/lib/mysql
+   configuration: /etc/mysql/my.cnf
+
+   login to mariadb: sudo mysql
+    show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| performance_schema |
++--------------------+
+
+CREATE USER 'devops'@localhost IDENTIFIED BY 'devops';
+GRANT ALL PRIVILEGES ON *.* TO 'devops'@localhost IDENTIFIED BY 'devops';
+FLUSH PRIVILEGES;
+
+GRANT ALL PRIVILEGES ON 'yourDB'.* TO 'devops'@localhost;  --> specific database 
+
+mysql -u devops -p'devops'
+
+
+=============================
+
+
+Frontend--> reactjs 
+------------------
+frontend: http://<ipaddress>:<portnumber><path>
+          http://34.132.243.255:80/
+
+java backend variable details:
+
+src/services/EmployeeService.js
+const EMPLOYEE_API_BASE_URL = "http://34.132.243.255:8080/api/v1/employees";
+
+backend --> java springboot
+-----------------------------
+path: src/main/resource/application.properties
+     
+cat application.properties
+spring.datasource.url=jdbc:mysql://34.132.243.255:3306/employee_management_system?useSSL=false
+spring.datasource.username=devops
+spring.datasource.password=devops
+
+spring.jpa.properties.hibernate.dialect = org.hibernate.dialect.MySQL5InnoDBDialect
+
+spring.jpa.hibernate.ddl-auto = update
+
+
+java url: http://<ipaddress>:<java port number>/api/v1//employees
+
+          http://34.132.243.255:8080/api/v1//employees
+
+
+database --> mariadb 
+--------------------
+ --> port: 3306
+     url: IPaddress:Port 
+          34.132.243.255:3306
+
+  create database <databasename>
+
+  create database employee_management_system;
+
+CREATE USER 'devops20'@'%' IDENTIFIED BY 'devops20';
+GRANT ALL PRIVILEGES ON *.* TO 'devops20'@'%' IDENTIFIED BY 'devops20';
+FLUSH PRIVILEGES;
